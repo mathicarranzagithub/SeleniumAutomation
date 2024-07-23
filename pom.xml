@@ -14,10 +14,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <testng.version>7.7.0</testng.version>
-    <selenium.version>4.1.1</selenium.version>
+    <maven.compiler.source>22</maven.compiler.source>
+    <maven.compiler.target>22</maven.compiler.target>
+    <testng.version>7.10.2</testng.version>
+    <selenium.version>4.23.0</selenium.version>
   </properties>
 
   <dependencies>
@@ -61,7 +61,7 @@
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
-      <version>5.0.3</version>
+      <version>5.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -80,8 +80,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>22</source>
+          <target>22</target>
           <annotationProcessorPaths>
             <path>
               <groupId>org.projectlombok</groupId>

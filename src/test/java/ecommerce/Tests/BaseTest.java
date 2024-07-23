@@ -18,22 +18,16 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupDriverConnection(){
-        // Check if running in CI environment
-        String ciEnvironment = System.getenv("CI");
-
-        if (ciEnvironment != null && ciEnvironment.equals("true")) {
-            // Use WebDriverManager in CI
-            WebDriverManager.chromedriver().setup();
-        } else {
-            // Use local path for ChromeDriver
+        if (System.getenv("CI") == null) {
+            // Local environment
             System.setProperty("webdriver.chrome.driver", "src/test/java/ecommerce/Drivers/chromedriver.exe");
         }
-
+    
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-
+    
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(12)); // Updated WebDriverWait constructor
+        wait = new WebDriverWait(driver, Duration.ofSeconds(12));
         driver.manage().window().maximize();
     }
 
