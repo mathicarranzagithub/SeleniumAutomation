@@ -1,0 +1,14 @@
+stages:
+  - test
+
+maven:
+  image: maven:3.8.4-openjdk-17
+  stage: test
+  script:
+    - mvn test
+  artifacts:
+    paths:
+      - target/surefire-reports/ # Ensure this path matches where your test results are saved
+  cache:
+    paths:
+      - .m2/repository # Caches Maven dependencies to speed up the build
