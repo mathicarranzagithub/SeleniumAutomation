@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.time.Duration;
 
 public class BaseTest {
@@ -16,7 +18,16 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupDriverConnection(){
-        System.setProperty("webdriver.chrome.driver", "src/test/java/ecommerce/Drivers/chromedriver.exe");
+        // Check if running in CI environment
+        String ciEnvironment = System.getenv("CI");
+
+        if (ciEnvironment != null && ciEnvironment.equals("true")) {
+            // Use WebDriverManager in CI
+            WebDriverManager.chromedriver().setup();
+        } else {
+            // Use local path for ChromeDriver
+            System.setProperty("webdriver.chrome.driver", "src/test/java/ecommerce/Drivers/chromedriver.exe");
+        }
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
