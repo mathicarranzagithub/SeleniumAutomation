@@ -13,4 +13,4 @@ cache:
 test_job:
   stage: test
   script:
-    - mvn clean test
+    - mvn test
