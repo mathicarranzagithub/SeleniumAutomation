@@ -6,9 +6,9 @@ stages:
 variables:
   MAVEN_OPTS: "-Dmaven.test.failure.ignore=true"
 
-cache:
-  paths:
-    - .m2/repository
+# cache:
+#   paths:
+#     - .m2/repository
 
 test_job:
   stage: test
