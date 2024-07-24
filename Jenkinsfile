@@ -27,12 +27,6 @@ pipeline {
                 bat 'mvn test'
             }
         }
-
-        stage('Report') {
-            steps {
-                // Publish test results
-                junit 'target/surefire-reports/testng-results.xml'
-            }
         }
     }
 
