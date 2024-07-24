@@ -1,28 +1,15 @@
+image: maven:3.8.6-openjdk-17
+
 stages:
   - build
   - test
 
-variables:
-  JAVA_HOME: "/usr/lib/jvm/java-17-openjdk"
-  MAVEN_HOME: "/usr/share/maven"
-
-before_script:
-  - echo "Installing Maven and Java..."
-  - apt-get update
-  - apt-get install -y openjdk-17-jdk maven
-
 build:
   stage: build
   script:
-    - echo "Building the project..."
     - mvn clean install
 
 test:
   stage: test
   script:
-    - echo "Running tests..."
     - mvn test
-
-after_script:
-  - echo "Cleaning up..."
-  - rm -rf target
