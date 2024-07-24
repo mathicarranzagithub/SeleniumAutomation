@@ -1,17 +1,31 @@
+image: maven:3.8.6-openjdk-17
+
 stages:
+  - build
   - test
 
-maven:
-  image: maven:3.8.6-openjdk-17
+variables:
+  MAVEN_OPTS: "-Dmaven.test.failure.ignore=true"
+
+cache:
+  paths:
+    - .m2/repository
+
+before_script:
+  - export DISPLAY=:99.0
+  - Xvfb :99 -screen 0 1920x1080x24 &
+
+build:
+  stage: build
+  script:
+    - mvn compile
+
+test:
   stage: test
-  services:
-    - name: selenium/standalone-chrome:latest
-      alias: selenium
   script:
     - mvn test
   artifacts:
     paths:
-      - target/surefire-reports/ # Ensure this path matches where your test results are saved
-  cache:
-    paths:
-      - .m2/repository # Caches Maven dependencies to speed up the build
+      - target/surefire-reports
+    reports:
+      junit: target/surefire-reports/*.xml
