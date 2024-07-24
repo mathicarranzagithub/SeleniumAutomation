@@ -23,29 +23,29 @@ public class LoginTests extends BaseTest {
        Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
     }
 
-    @Test
-    public void testLoginWithEmptyEmail() {
-        loginPage.enterPassword("somepassword");
-        loginPage.clickLogin();
-    //    Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
-    }
+     @Test
+     public void testLoginWithEmptyEmail() {
+         loginPage.enterPassword("somepassword");
+         loginPage.clickLogin();
+        //Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
+     }
 
-    @Test
-    public void testLoginWithEmptyPassword() {
-        loginPage.enterEmail("user@example.com");
-        loginPage.clickLogin();
-     //   Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
-    }
+     @Test
+     public void testLoginWithEmptyPassword() {
+         loginPage.enterEmail("user@example.com");
+         loginPage.clickLogin();
+        //Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
+     }
 
-    @Test
-    public void testRegisterLink() {
-        loginPage.clickRegisterLink();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/register");
-    }
+     @Test
+     public void testRegisterLink() {
+         loginPage.clickRegisterLink();
+         Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/register");
+     }
 
-    @Test(priority = 1)
-    public void testForgotPasswordLink() {
-        loginPage.clickForgotPasswordLink();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/forgot-password");
-    }
+     @Test(priority = 1)
+     public void testForgotPasswordLink() {
+         loginPage.clickForgotPasswordLink();
+         Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/forgot-password");
+     }
 }
