@@ -31,12 +31,6 @@ pipeline {
     
     post {
         always {
-            //Publish HTML report of Selenium
-            publishHTML(target: [
-                reportDir: 'path/to/html-report',
-                reportFiles: 'index.html',
-                reportName: 'Selenium HTML Report'
-            ])
             // Clean up after execution
             cleanWs()
         }
