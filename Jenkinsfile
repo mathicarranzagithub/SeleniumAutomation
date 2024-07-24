@@ -17,14 +17,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Execute build with Maven
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 // Execute tests with Maven
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
