@@ -18,14 +18,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupDriverConnection(){
-        if (System.getenv("CI") == null) {
-            // Local environment
-            System.setProperty("webdriver.chrome.driver", "src/test/java/ecommerce/Drivers/chromedriver.exe");
-        }
-    
+        WebDriverManager.chromedriver().setup(); // Automatically manages ChromeDriver
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-    
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(12));
         driver.manage().window().maximize();
