@@ -14,9 +14,3 @@ test_job:
   stage: test
   script:
     - mvn clean test
-  artifacts:
-    paths:
-      - target/surefire-reports/*.xml
-    reports:
-      junit: target/surefire-reports/*.xml
-    expire_in: 1 week
