@@ -6,6 +6,10 @@ pipeline {
         maven 'Maven 3.8.6'
     }
 
+        environment {
+        BASE_URL = credentials('baseUrl')
+    }
+
     stages {
         stage('Checkout') {
             steps {
