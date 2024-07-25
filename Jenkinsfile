@@ -7,7 +7,7 @@ pipeline {
     }
 
         environment {
-        BASE_URL = credentials('baseUrl')
+        baseUrl = credentials('baseUrl')
     }
 
     stages {
