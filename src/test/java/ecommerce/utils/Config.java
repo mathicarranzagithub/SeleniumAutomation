@@ -1,6 +1,5 @@
 package ecommerce.utils;
 
-import java.io.FileInputStream;
 import java.util.Properties;
 import java.io.IOException;
 import java.io.InputStream;
