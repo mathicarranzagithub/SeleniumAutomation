@@ -14,21 +14,6 @@ pipeline {
             }
         }
 
-        stage('Setup Config') {
-    steps {
-        script {
-            // Define the path to the config file
-            def configFile = 'src/test/resources/config.properties'
-            
-            // Check if the file exists
-            if (!fileExists(configFile)) {
-                // Logic to copy the file from another location if needed
-                bat 'copy path\\to\\source\\config.properties src\\test\\resources\\config.properties'
-            }
-        }
-    }
-}
-
         stage('Build') {
             steps {
                 // Execute build with Maven
