@@ -14,14 +14,6 @@ pipeline {
             }
         }
 
-        stage('Verify Config File') {
-            steps {
-                bat 'echo %cd%'
-                bat 'dir'
-                bat 'type src\\test\\resources\\config.properties'
-            }
-        }
-        
         stage('Build') {
             steps {
                 // Execute build with Maven
@@ -32,6 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Execute tests with Maven
+                dir('SeleniumAutomation')
                 bat 'mvn test'
             }
         }
