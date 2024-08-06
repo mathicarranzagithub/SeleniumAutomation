@@ -1,43 +1,51 @@
 package ecommerce.Pages;
 
+import java.util.UUID;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
+    protected LandingPage landingPage;
 
     // Selectors
-    private By emailInput = By.id("email");
-    private By passwordInput = By.id("password");
-    private By loginButton = By.cssSelector("input[data-test='login-submit']");
-    private By errorMessage = By.cssSelector("div[data-test='login-error']");
-    private By registerLink = By.cssSelector("a[data-test='register-link']");
-    private By forgotPasswordLink = By.cssSelector("a[data-test='forgot-password-link']");
+    private By newUserEmailInput = By.cssSelector("[data-qa=signup-email]");
+    private By passwordInput = By.cssSelector("[data-qa=login-password]");
+    private By loginEmailInput = By.cssSelector("[data-qa=login-email]");
+    private By signUpButton = By.cssSelector("[data-qa=signup-button]");
+    private By loginButton = By.cssSelector("[data-qa=login-button]");
+    private By nameInput = By.cssSelector("[data-qa=signup-name]");
+    private By signupLoginLink = By.cssSelector("[href='/login']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        this.landingPage = new LandingPage(driver); // Inicializa LandingPage
     }
 
-    public void enterEmail(String email) {
-        sendKeys(email, emailInput);
-    }
-
-    public void enterPassword(String password) {
+    public void login(String email, String password) {
+        click(signupLoginLink);
+        sendKeys(email, loginEmailInput);
         sendKeys(password, passwordInput);
-    }
-
-    public void clickLogin() {
         click(loginButton);
     }
 
-    public String getErrorMessage() {
-        return getText(errorMessage);
+    public void newUserSignup(String firstName, String email) {
+        click(signupLoginLink);
+        sendKeys(firstName, nameInput);
+        sendKeys(email, newUserEmailInput);
+        click(signUpButton);
     }
 
-    public void clickRegisterLink() {
-        click(registerLink);
+    public void clickLogin() {
+        click(this.loginButton);
     }
 
-    public void clickForgotPasswordLink() {
-        click(forgotPasswordLink);
+    public String myAccountTitle() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'myAccountTitle'");
+    }
+
+    public static String generateRandomEmail() {
+        return "test" + UUID.randomUUID().toString() + "@example.com";
     }
 }

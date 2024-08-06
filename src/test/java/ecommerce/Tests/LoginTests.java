@@ -1,53 +1,35 @@
 package ecommerce.Tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import ecommerce.testdata.SignupTestData;
+import ecommerce.testdata.SignUpForm;
 import org.testng.annotations.Test;
+import ecommerce.Pages.SignUpPage;
 import ecommerce.Pages.LoginPage;
+import org.testng.Assert;
 
 @Test(groups = "Login")
 public class LoginTests extends BaseTest {
+    private SignUpPage signUpPage;
     private LoginPage loginPage;
+    public String randomEmail;
 
     @BeforeMethod
     public void setUpTest() {
         driver.get(baseUrl); // Using baseUrl from BaseTest
+        signUpPage = new SignUpPage(driver);
         loginPage = new LoginPage(driver);
     }
 
     @Test
-    public void testLoginWithInvalidCredentials() {
-        loginPage.enterEmail("invalid@example.com");
-        loginPage.enterPassword("wrongpassword");
-        loginPage.clickLogin();
-        Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or password");
-    }
+    public void createNewUser() {
+        randomEmail = LoginPage.generateRandomEmail();
+        loginPage.newUserSignup("Test", randomEmail);
+        SignUpForm signUpForm = SignupTestData.FormUserDataInfo;
 
-    @Test
-    public void testLoginWithEmptyEmail() {
-        loginPage.enterPassword("somepassword");
-        loginPage.clickLogin();
-        // Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or
-        // password");
-    }
+        signUpPage.fillForm(signUpForm);
+        signUpPage.clickCreateAccount();
 
-    @Test
-    public void testLoginWithEmptyPassword() {
-        loginPage.enterEmail("user@example.com");
-        loginPage.clickLogin();
-        // Assert.assertEquals(loginPage.getErrorMessage(), "Invalid email or
-        // password");
-    }
-
-    @Test
-    public void testRegisterLink() {
-        loginPage.clickRegisterLink();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/register");
-    }
-
-    @Test(priority = 1)
-    public void testForgotPasswordLink() {
-        loginPage.clickForgotPasswordLink();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://practicesoftwaretesting.com/auth/forgot-password");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://automationexercise.com/account_created");
     }
 }
