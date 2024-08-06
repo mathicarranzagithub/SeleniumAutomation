@@ -1,6 +1,6 @@
 package ecommerce.testdata;
 
-public class SignUpForm {
+public class SignupForm {
     private String signupFirstName;
     private String signupLastName;
     private String mobileNumber;
@@ -12,9 +12,9 @@ public class SignUpForm {
     private String city;
 
     // Constructor
-    public SignUpForm(String signUpFirstName, String signupLastName, String mobileNumber, String loginEmail,
+    public SignupForm(String signupFirstName, String signupLastName, String mobileNumber, String loginEmail,
             String password, String address, String zipcode, String state, String city) {
-        this.signupFirstName = signUpFirstName;
+        this.signupFirstName = signupFirstName;
         this.signupLastName = signupLastName;
         this.mobileNumber = mobileNumber;
         this.loginEmail = loginEmail;
@@ -34,11 +34,11 @@ public class SignUpForm {
         return password;
     }
 
-    public String getSignUpFirstName() {
+    public String getSignupFirstName() {
         return signupFirstName;
     }
 
-    public String getSignUpLastName() {
+    public String getSignupLastName() {
         return signupLastName;
     }
 

@@ -1,10 +1,10 @@
 package ecommerce.Pages;
 
 import org.openqa.selenium.WebDriver;
-import ecommerce.testdata.SignUpForm;
+import ecommerce.testdata.SignupForm;
 import org.openqa.selenium.By;
 
-public class SignUpPage extends BasePage {
+public class SignupPage extends BasePage {
     private By createAccountButton = By.cssSelector("[data-qa=create-account]");
     private By mobileNumberInput = By.cssSelector("#mobile_number");
     private By firstNameInput = By.cssSelector("#first_name");
@@ -15,19 +15,19 @@ public class SignUpPage extends BasePage {
     private By stateInput = By.cssSelector("#state");
     private By cityInput = By.cssSelector("#city");
 
-    public SignUpPage(WebDriver driver) {
+    public SignupPage(WebDriver driver) {
         super(driver);
     }
 
-    public void fillForm(SignUpForm signUpForm) {
-        sendKeys(signUpForm.getSignUpFirstName(), firstNameInput);
-        sendKeys(signUpForm.getMobileNumber(), mobileNumberInput);
-        sendKeys(signUpForm.getSignUpLastName(), lastNameInput);
-        sendKeys(signUpForm.getPassword(), passwordInput);
-        sendKeys(signUpForm.getZipcode(), zipcodeInput);
-        sendKeys(signUpForm.getAddress(), addressInput);
-        sendKeys(signUpForm.getState(), stateInput);
-        sendKeys(signUpForm.getCity(), cityInput);
+    public void fillForm(SignupForm signupForm) {
+        sendKeys(signupForm.getSignupFirstName(), firstNameInput);
+        sendKeys(signupForm.getMobileNumber(), mobileNumberInput);
+        sendKeys(signupForm.getSignupLastName(), lastNameInput);
+        sendKeys(signupForm.getPassword(), passwordInput);
+        sendKeys(signupForm.getZipcode(), zipcodeInput);
+        sendKeys(signupForm.getAddress(), addressInput);
+        sendKeys(signupForm.getState(), stateInput);
+        sendKeys(signupForm.getCity(), cityInput);
     }
 
     public void clickCreateAccount() {

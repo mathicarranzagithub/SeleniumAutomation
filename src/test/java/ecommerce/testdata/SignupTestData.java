@@ -1,7 +1,7 @@
 package ecommerce.testdata;
 
 public class SignupTestData {
-    public static final SignUpForm FormUserDataInfo = new SignUpForm(
+    public static final SignupForm FormUserDataInfo = new SignupForm(
             "Test",
             "Demo",
             "123",
